@@ -5,8 +5,14 @@ get_header();
 
     <main id="primary" class="site-main">
         <section id="banner" class="banner fade-in-section">
-            <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
+            <video autoplay muted loop poster="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?>"
+                <source src="<?php echo get_template_directory_uri() . '/assets/videos/video-studio-koukaki.mp4'; ?>" type="video/mp4">
+            </video>
+            <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?>" alt="logo Fleurs d'oranger & chats errants"> 
         </section>
+<!-- <section id="banner" class="banner fade-in-section">
+            <img src="<?php //echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
+        </section> -->
         <section id="story" class="story fade-in-section">
             <h2>L'histoire</h2>
             <article id="story" class="story__article">
@@ -70,59 +76,43 @@ get_header();
 <!--Javascript pour le fade-in des sections déclanché par le scrolling de la page-->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  var fadeSections = document.querySelectorAll('.fade-in-section');
+  var slideH2 = document.querySelectorAll('.slide-in');
 
-    var fadeSections = document.querySelectorAll('.fade-in-section');
+  function checkFadeSections() {
+    fadeSections.forEach(function(section) {
+      var sectionTop = section.getBoundingClientRect().top;
+      var windowHeight = window.innerHeight;
 
-    function checkFadeSections() {
-        fadeSections.forEach(function(section) {
-        var sectionTop = section.getBoundingClientRect().top;
-        var windowHeight = window.innerHeight;
-
- /*        console.log('section : ', section)
-        console.log('sectionTop : ',sectionTop)
-        console.log('windowHeight : ',windowHeight)
- */
-
-        if (sectionTop < windowHeight * 0.8) {
-            section.classList.add('show');
-        }
-        });
-    }
-
-  // Appeler la fonction checkFadeSections lorsque la page est chargée
-  checkFadeSections();
-
-  // Appeler la fonction checkFadeSections lorsque la page est défilée
-  window.addEventListener('scroll', checkFadeSections);
-});
-
-//Script pour slide-in titrage H2
-
-document.addEventListener('DOMContentLoaded', function() {
-
-var slideH2 = document.querySelectorAll('.slide-in');
-
-function checkSlideH2() {
-    slidesH2.forEach(function(slideH2) {
-    var sectionTop = slideH2.getBoundingClientRect().top;
-    var windowHeight = window.innerHeight;
-
-    console.log('slideh2 : ', slideH2)
-    console.log('sectionTop : ',sectionTop)
-    console.log('windowHeight : ',windowHeight)
-
-
-    if (sectionTop < windowHeight * 0.8) {
-        slideH2.classList.add('slide-in');
-    }
+      if (sectionTop < windowHeight * 0.8) {
+        section.classList.add('show');
+      }
     });
-}
+  }
 
-// Appeler la fonction checkFadeSections lorsque la page est chargée
-checkSlideH2();
+  function checkSlideH2() {
+    slideH2.forEach(function(slide) {
+      var slideTop = slide.getBoundingClientRect().top;
 
-// Appeler la fonction checkFadeSections lorsque la page est défilée
-window.addEventListener('scroll', checkSlideH2);
+      var windowHeight = window.innerHeight;
+ 
+      if (slideTop < windowHeight * 0.8) {
+        slide.classList.add('slide-in');
+      } else {
+        slide.classList.remove('slide-in');
+      }
+    });
+  }
+
+  // Appeler les fonctions checkFadeSections et checkSlideH2 lorsque la page est chargée
+  checkFadeSections();
+  //checkSlideH2();
+
+  // Appeler les fonctions checkFadeSections et checkSlideH2 lorsque la page est défilée
+  window.addEventListener('scroll', function() {
+    checkFadeSections();
+    checkSlideH2();
+  });
 });
 
 
