@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  Theme Name:  Fleurs d'orangers et chats errants - Oscars Short
  Theme URI: https://www.koukaki.local
@@ -7,13 +8,83 @@
  Description: Thème enfant à l'ocasion de la nomination aux Oscars Shorts
  Version: 0.1
  */
+.fade-in-section {
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+.fade-in-section.show {
+  opacity: 1;
+}
 
- /*Fade-in via le scroll pour les sections*/
- .fade-in-section {
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
-  }
-  
-  .fade-in-section.show {
-    opacity: 1;
-  }
+.site-footer {
+  padding-top: 7em;
+}
+.site-footer::before {
+  animation: rotatesunflower 5s infinite linear;
+}
+.site-footer::after {
+  animation: rotateOrchid 6s infinite linear;
+}
+
+.story__article::after {
+  animation: rotateHibiscus 5s infinite linear;
+}
+
+.story h2::after {
+  animation: rotateSunflower 6s infinite linear;
+}
+
+#studio h2::before {
+  animation: rotateRandomflower 12s infinite linear;
+}
+
+#studio h2::after {
+  animation: rotateFlower 15s infinite linear;
+}
+
+h2 {
+  color: #FFF5E9;
+  font-size: 4.429rem;
+  background-image: url(./assets/images/purple_title_bg.png);
+  background-color: #FFF5E9;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding: 1em 2em;
+  margin: 0;
+  background-position: center;
+  text-align: center;
+}
+
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.site-footer .oscar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 75%;
+  margin-bottom: 155px;
+}
+.site-footer h2.titre_oscar {
+  background-color: transparent;
+}
+.site-footer .titre_oscar {
+  color: #FFF5E9;
+  font-size: 2.4rem;
+  padding: 1.8em 2em;
+  background-image: url(./assets/images/titre_oscar_bg.png) !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.site-footer .imgRight {
+  margin-left: 1em;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -59,11 +59,12 @@ get_header();
 
 
         <section id="studio" class="fade-in-section">
-            <h2>Studio Koukaki</h2>
+            <h2 class="slide-in">Studio Koukaki</h2>
             <div>
                 <p>Acteur majeur de l’animation, Koukaki est un studio intégré fondé en 2012 qui créé, produit et distribue des programmes originaux dans plus de 190 pays pour les enfants et les adultes. Nous avons deux sections en activité : le long métrage et le court métrage. Nous développons des films fantastiques, principalement autour de la culture de notre pays natal, le Japon.</p>
                 <p>Avec une créativité et une capacité d’innovation mondialement reconnues, une expertise éditoriale et commerciale à la pointe de son industrie, le Studio Koukaki se positionne comme un acteur incontournable dans un marché en forte croissance. Koukaki construit chaque année de véritables succès et capitalise sur de puissantes marques historiques. Cette année, il vous présente “Fleurs d’oranger et chats errants”.</p>
             </div>
+
             </section>
     </main><!-- #main -->
 <!--Javascript pour le fade-in des sections déclanché par le scrolling de la page-->
@@ -72,17 +73,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var fadeSections = document.querySelectorAll('.fade-in-section');
 
-    
-
     function checkFadeSections() {
         fadeSections.forEach(function(section) {
         var sectionTop = section.getBoundingClientRect().top;
         var windowHeight = window.innerHeight;
 
-        console.log('section : ', section)
+ /*        console.log('section : ', section)
         console.log('sectionTop : ',sectionTop)
         console.log('windowHeight : ',windowHeight)
-
+ */
 
         if (sectionTop < windowHeight * 0.8) {
             section.classList.add('show');
@@ -96,6 +95,37 @@ document.addEventListener('DOMContentLoaded', function() {
   // Appeler la fonction checkFadeSections lorsque la page est défilée
   window.addEventListener('scroll', checkFadeSections);
 });
+
+//Script pour slide-in titrage H2
+
+document.addEventListener('DOMContentLoaded', function() {
+
+var slideH2 = document.querySelectorAll('.slide-in');
+
+function checkSlideH2() {
+    slidesH2.forEach(function(slideH2) {
+    var sectionTop = slideH2.getBoundingClientRect().top;
+    var windowHeight = window.innerHeight;
+
+    console.log('slideh2 : ', slideH2)
+    console.log('sectionTop : ',sectionTop)
+    console.log('windowHeight : ',windowHeight)
+
+
+    if (sectionTop < windowHeight * 0.8) {
+        slideH2.classList.add('slide-in');
+    }
+    });
+}
+
+// Appeler la fonction checkFadeSections lorsque la page est chargée
+checkSlideH2();
+
+// Appeler la fonction checkFadeSections lorsque la page est défilée
+window.addEventListener('scroll', checkSlideH2);
+});
+
+
 </script> 
 
 <?php
