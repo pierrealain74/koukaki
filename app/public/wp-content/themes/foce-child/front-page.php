@@ -5,14 +5,11 @@ get_header();
 
     <main id="primary" class="site-main">
         <section id="banner" class="banner fade-in-section">
-            <video autoplay muted loop poster="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?>"
+            <video autoplay muted loop>
                 <source src="<?php echo get_template_directory_uri() . '/assets/videos/video-studio-koukaki.mp4'; ?>" type="video/mp4">
             </video>
             <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?>" alt="logo Fleurs d'oranger & chats errants"> 
         </section>
-<!-- <section id="banner" class="banner fade-in-section">
-            <img src="<?php //echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
-        </section> -->
         <section id="story" class="story fade-in-section">
             <h2>L'histoire</h2>
             <article id="story" class="story__article">
@@ -73,8 +70,30 @@ get_header();
 
             </section>
     </main><!-- #main -->
-<!--Javascript pour le fade-in des sections déclanché par le scrolling de la page-->
+
+
+<!--Javascript pour le parallax et fade-in des sections déclanché par le scrolling de la page-->
+<script src="<?php echo get_stylesheet_directory_uri() . '/node_modules/simple-parallax-js/dist/simpleParallax.min.js'; ?>"></script>
+
 <script>
+
+//Créer effet parallax sur video
+const img = document.querySelectorAll('figure > img');
+//console.log('image : ', img)
+new simpleParallax(img, {
+	orientation: 'right',
+  scale: 1.8
+});
+
+const video = document.querySelector('video');
+console.log('image logo : ', video)
+new simpleParallax(video, {
+  orientation: 'right'
+});
+
+
+
+//Effets avec le scroll
 document.addEventListener('DOMContentLoaded', function() {
   var fadeSections = document.querySelectorAll('.fade-in-section');
   var slideH2 = document.querySelectorAll('.slide-in');
