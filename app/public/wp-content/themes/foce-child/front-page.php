@@ -57,6 +57,7 @@ get_header();
             <article id="place" class="fade-in-section">
                 <div>
                     <h3>Le Lieu</h3>
+                    <div class="nuages"><img src="<?php echo get_template_directory_uri() . '/assets/images/nuages.png'; ?>" alt="nuages"></div>
                     <p><?php echo get_theme_mod('place'); ?></p>
                 </div>
 
