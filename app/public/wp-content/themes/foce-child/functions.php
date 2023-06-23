@@ -19,4 +19,9 @@ function enqueue_fade_in_script() {
     wp_enqueue_script( 'fade-in-script', get_stylesheet_directory_uri() . 'js/fade-in.js', array(), '1.0', true );
   }
   add_action( 'wp_enqueue_scripts', 'enqueue_fade_in_script' );
+
+  function enqueue_swiper_styles() {
+    wp_enqueue_style( 'swiper', get_stylesheet_directory_uri() . '/swiper9_swiper-bundle.min.css' );
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_swiper_styles' );
   

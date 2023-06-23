@@ -66,7 +66,7 @@
  h2 {
    color: #FFF5E9;
    font-size: 4.429rem;
-   background-image: url(./assets/images/purple_title_bg.png);
+   //background-image: url(./assets/images/purple_title_bg.png);
    background-color: #FFF5E9;
    background-repeat: no-repeat;
    background-size: contain;
@@ -143,3 +143,27 @@
     }
   }
 }
+
+
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+
+  & img {
+    display: block;
+    width: 100%;
+  }
+}
+
+figcaption{
+  text-align: center;
+}
+/*npm run compile:sass */

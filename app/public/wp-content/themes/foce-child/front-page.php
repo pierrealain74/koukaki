@@ -11,7 +11,11 @@ get_header();
             <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?>" alt="logo Fleurs d'oranger & chats errants"> 
         </section>
         <section id="story" class="story fade-in-section">
-            <h2>L'histoire</h2>
+            <h2 class="slide-in">L'histoire</h2>
+<!-- 
+            <section id="studio" class="fade-in-section">
+            <h2 class="slide-in">Studio Koukaki</h2> -->
+
             <article id="story" class="story__article">
                 <p><?php echo get_theme_mod('story'); ?></p>
             </article>
@@ -25,32 +29,31 @@ get_header();
             );
             $characters_query = new WP_Query($args);
             ?>
-            <article id="characters" class="fade-in-section">
-                <div class="main-character">
-                    <h3>Les personnages</h3>
-                    <?php
-                    $main_character = $characters_query->posts[0];
-                    echo '<figure>';
-                    echo get_the_post_thumbnail( $main_character->ID, 'full' );
-                    echo '<figcaption>'. $main_character->post_title . '</figcaption>';
-                    echo '</figure>';
-                    $characters_query->next_post();
-                    ?>
-                </div>
-                <div class="other-characters">
-                    <?php
-                    while ( $characters_query->have_posts() ) {
-                        $characters_query->the_post();
-                        echo '<figure>';
-                        echo get_the_post_thumbnail( get_the_ID(), 'full' );
-                        echo '<figcaption>';
-                        the_title();
-                        echo'</figcaption>';
-                        echo '</figure>';
-                    }
-                    ?>
-                </div>
-            </article>
+            <!--Ici insérer l'animation Swiper sur les personnages-->
+            <?php
+
+            echo '<div class="swiper mySwiper">';
+            echo '<div class="swiper-wrapper">';
+
+            while ($characters_query->have_posts()) {
+
+              $characters_query->the_post();
+
+
+              echo '<div class="swiper-slide">';
+              echo get_the_post_thumbnail(get_the_ID(), 'full');
+              echo '<figcaption>';
+              the_title();
+              echo'</figcaption>';
+              echo '</div>';
+            }
+            
+            echo '</div></div>';            
+            ?>
+            
+            
+            <!--Fin Swipper-->
+
             <article id="place" class="fade-in-section">
                 <div>
                     <h3>Le Lieu</h3>
@@ -74,16 +77,18 @@ get_header();
 
 <!--Javascript pour le parallax et fade-in des sections déclanché par le scrolling de la page-->
 <script src="<?php echo get_stylesheet_directory_uri() . '/node_modules/simple-parallax-js/dist/simpleParallax.min.js'; ?>"></script>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 <script>
 
-//Créer effet parallax sur video
-const img = document.querySelectorAll('figure > img');
+//Créer effet parallax sur video et sur les chats
+/* const img = document.querySelectorAll('figure > img');
 //console.log('image : ', img)
 new simpleParallax(img, {
 	orientation: 'right',
   scale: 1.8
-});
+}); */
 
 const video = document.querySelector('video');
 console.log('image logo : ', video)
@@ -96,7 +101,7 @@ new simpleParallax(video, {
 //Effets avec le scroll
 document.addEventListener('DOMContentLoaded', function() {
   var fadeSections = document.querySelectorAll('.fade-in-section');
-  var slideH2 = document.querySelectorAll('.slide-in');
+  var slideH2 = document.querySelectorAll('.slide-in'); // Prend tous les <h2 class="slide-in">
 
   function checkFadeSections() {
     fadeSections.forEach(function(section) {
@@ -134,8 +139,28 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+ /* Initialize Swipeeeeeeeeeeeeeer*/
+
+ var swiper = new Swiper(".mySwiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+      },
+    });
+
 
 </script> 
+
 
 <?php
 get_footer();
