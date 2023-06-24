@@ -573,35 +573,14 @@ table {
 	position: absolute;
 	left: 4em;
 	top: 0em;
-	animation: rotatesunflower 5s infinite linear;
 }
-
-@keyframes rotatesunflower {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 
 .site-footer::after {
 	content: url("./assets/images/orchid.png");
 	position: absolute;
 	right: -4em;
 	bottom: 7.8em;
-	animation: rotateOrchid 6s infinite linear;
 }
-@keyframes rotateOrchid {
-    from {
-        transform: rotate(360deg);
-    }
-    to {
-        transform: rotate(0deg);
-    }
-}
-
 
 .site-footer ul {
 	padding: 0;

@@ -12,7 +12,7 @@ get_header();
         </section>
         <section id="story" class="story fade-in-section">
             <h2 class="slide-in">L'histoire</h2>
-<!-- 
+            <!-- 
             <section id="studio" class="fade-in-section">
             <h2 class="slide-in">Studio Koukaki</h2> -->
 
@@ -54,17 +54,33 @@ get_header();
             
             <!--Fin Swipper-->
 
-            <article id="place" class="fade-in-section">
-                <div>
-                    <h3>Le Lieu</h3>
-                    <div class="nuages"><img src="<?php echo get_template_directory_uri() . '/assets/images/nuages.png'; ?>" alt="nuages"></div>
-                    <p><?php echo get_theme_mod('place'); ?></p>
+<!--             <article id="place" class="fade-in-section">
+
+                
+                <div class="clouds">
+                  <img class="little-cloud" src="<?php //echo get_stylesheet_directory_uri() . '/assets/images/little_cloud.png' ?>" alt="petit nuage">
+                  <img class="big-cloud" src="<?php //echo get_stylesheet_directory_uri() . '/assets/images/big_cloud.png' ?>" alt="grand nuage">
                 </div>
 
+                <h3>Le Lieu</h3>                    
+                <p><?php //echo get_theme_mod('place'); ?></p>
+
+            </article> -->
+
+
+            <article id="place" class="fade-in-section">
+                <div class="clouds">
+                    <img class="little-cloud" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/little_cloud.png' ?>" alt="petit nuage" data-1233="transform: translateX(0px);" data-2500="transform: translateX(-600px);">
+
+                    <img class="big-cloud" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/big_cloud.png' ?>" alt="grand nuage" data-1233="transform: translateX(0px);" data-2500="transform: translateX(-400px);">
+                </div>
+                
+                <div class="place">
+                    <h3>Le Lieu</h3>
+                    <p><?php echo get_theme_mod('place'); ?></p>
+                </div>
             </article>
         </section>
-
-
         <section id="studio" class="fade-in-section">
             <h2 class="slide-in">Studio Koukaki</h2>
             <div>
@@ -78,18 +94,13 @@ get_header();
 
 <!--Javascript pour le parallax et fade-in des sections déclanché par le scrolling de la page-->
 <script src="<?php echo get_stylesheet_directory_uri() . '/node_modules/simple-parallax-js/dist/simpleParallax.min.js'; ?>"></script>
-<!-- Swiper JS -->
+
+<!-- Swiper JS pour l'effet carrousel des chats-->
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 <script>
 
 //Créer effet parallax sur video et sur les chats
-/* const img = document.querySelectorAll('figure > img');
-//console.log('image : ', img)
-new simpleParallax(img, {
-	orientation: 'right',
-  scale: 1.8
-}); */
 
 const video = document.querySelector('video');
 console.log('image logo : ', video)
@@ -103,6 +114,10 @@ new simpleParallax(video, {
 document.addEventListener('DOMContentLoaded', function() {
   var fadeSections = document.querySelectorAll('.fade-in-section');
   var slideH2 = document.querySelectorAll('.slide-in'); // Prend tous les <h2 class="slide-in">
+  const clouds = document.querySelector('.big-cloud');
+
+  var skrollrInstance = skrollr.init();
+
 
   function checkFadeSections() {
     fadeSections.forEach(function(section) {
@@ -129,6 +144,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  function checkClouds(){
+
+  const clouds = document.querySelector('.big-cloud');
+
+  var cloudsTop = clouds.getBoundingClientRect().top;
+
+  var windowHeight = window.innerHeight;
+
+  console.log(cloudsTop,windowHeight)
+  }
+
   // Appeler les fonctions checkFadeSections et checkSlideH2 lorsque la page est chargée
   checkFadeSections();
   //checkSlideH2();
@@ -137,6 +163,8 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('scroll', function() {
     checkFadeSections();
     checkSlideH2();
+    checkClouds();
+
   });
 });
 
@@ -158,6 +186,49 @@ document.addEventListener('DOMContentLoaded', function() {
         el: ".swiper-pagination",
       },
     });
+
+
+//Scroll des nuages dans #place avec JQUERY
+/*  function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+} */
+
+// CLOUDS ANIMATION ON SCROLL WHEN IN VIEWPORT
+/* function moveClouds() {
+
+        const clouds = document.querySelectorAll('.big-cloud');
+
+        var cloudsTop = clouds.getBoundingClientRect().top;
+
+        var windowHeight = window.innerHeight;
+
+        if (cloudsTop < windowHeight * 0.8) {
+
+          cloud.classList.add('scrolling');
+        } else {
+            cloud.classList.remove('scrolling');
+        }
+
+        
+
+        const scrollPosition = window.scrollY;//nombre de pixels que la page a été défilée verticalement depuis le haut
+
+        const offset = scrollPosition / 5;//contrôler la vitesse du déplacement du nuage
+
+        console.log('scrollPosition', scrollPosition);
+
+        cloud.style.transform = 'translateX(' + (-offset) + 'px)';
+
+}
+ */
+/* window.addEventListener('scroll', moveClouds); */
+
 
 
 </script> 

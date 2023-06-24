@@ -123,6 +123,33 @@ figcaption {
   text-align: center; }
 
 .story #place {
-  background-image: url(./assets/images/bg-lieu.png); }
+  background-image: url(./assets/images/bg-lieu.png);
+  position: relative; }
 
-/*npm run compile:sass */
+/* CLOUDS POSITIONING AND ANIMATION */
+.story .little-cloud,
+.story .big-cloud {
+  position: absolute;
+  z-index: 1;
+  filter: blur(15px); }
+
+.story .big-cloud {
+  top: 19%;
+  right: 15%; }
+
+.story .little-cloud {
+  top: 39%;
+  right: 25%; }
+
+.story .little-cloud.scrolling,
+.story .big-cloud.scrolling {
+  animation: cloud-movement linear forwards; }
+
+@keyframes cloud-movement {
+  from {
+    transform: translateX(0); }
+  to {
+    transform: translateX(-300px); } }
+
+/*npm run compile:sass OU npm run watch:sass */
+/*etre placé dans le theme enfant*/
