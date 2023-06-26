@@ -14,11 +14,18 @@ if ( get_stylesheet() !== get_template() ) {
         return get_option( 'theme_mods_' . get_template(), $default );
     } );
 }
-//Ajout du script JS Fade-In
-function enqueue_fade_in_script() {//wp_enqueue_script() : Fonction WordPress pour ajouter des scripts
-    wp_enqueue_script( 'fade-in-script', get_stylesheet_directory_uri() . 'js/fade-in.js', array(), '1.0', true );
+
+//Ajout du script menu.js
+function enqueue_menu() {
+    wp_enqueue_script( 'menu', get_stylesheet_directory_uri() . '/js/menu.js', array(), '1.0', true ); //afficher au tout debut du header
   }
-  add_action( 'wp_enqueue_scripts', 'enqueue_fade_in_script' );
+  add_action( 'wp_enqueue_scripts', 'enqueue_menu' );//le 1 = afficher au tout debut du header
+  
+/* //Ajout du script JS Fade-In
+function enqueue_fade_in_script() {
+    wp_enqueue_script( 'fade-in-script', get_stylesheet_directory_uri() . '/js/fade-in.js', array());
+  }
+  add_action( 'wp_enqueue_scripts', 'enqueue_fade_in_script' ); */
 
   //Ajout de JQuery
 function enqueue_jquery() {
@@ -38,12 +45,6 @@ function enqueue_skroll() {
     wp_enqueue_script( 'skroll', get_stylesheet_directory_uri() . '/js/skrollr-master/dist/skrollr.min.js', array(), '1.0', false );
   }
   add_action( 'wp_enqueue_scripts', 'enqueue_skroll' );
-
-/* function enqueue_skroll_init() {
-    wp_enqueue_script( 'skroll-init', get_stylesheet_directory_uri() . 'js/skrollr-master/skrollr-init.js', array(), '1.0', false );
-  }
-  add_action( 'wp_enqueue_scripts', 'enqueue_skroll_init' ); */
-
 
 //Test de création d'une section dans le customizer
 function theme_customizer_sections( $wp_customize ) {

@@ -1,0 +1,30 @@
+@media all and (max-width: 768px) {
+
+    #story h2, #studio h2{
+        
+        font-size: 2.4rem;
+    }
+    div.oscar{
+        flex-direction: column !important;
+
+    }
+    h2.titre_oscar{
+        color:#ff5c00 !important;
+    }
+
+    .site-footer .titre_oscar {
+        background-image: url(./assets/images/titre_oscar_bg.png) !important;
+    }
+    .site-footer {
+        padding-top: 3em;
+    }
+
+
+}
+
+@media (max-width: 920px){
+   /*  .story #place > div {
+        margin: auto;
+       width: 75%;
+    } */
+}

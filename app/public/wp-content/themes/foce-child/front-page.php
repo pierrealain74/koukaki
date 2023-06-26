@@ -32,7 +32,7 @@ get_header();
             <!--Ici insérer l'animation Swiper sur les personnages-->
             <?php
 
-            echo '<div class="swiper mySwiper">';
+            echo '<div class="swiper mySwiper" id="characters">';
             echo '<div class="swiper-wrapper">';
 
             while ($characters_query->have_posts()) {
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var slideH2 = document.querySelectorAll('.slide-in'); // Prend tous les <h2 class="slide-in">
   const clouds = document.querySelector('.big-cloud');
 
-  var skrollrInstance = skrollr.init();
+  var skrollrInstance = skrollr.init();//Skroll.js pour parallax sur les nuages (se deplacent sur la gauche)
 
 
   function checkFadeSections() {
@@ -186,49 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
         el: ".swiper-pagination",
       },
     });
-
-
-//Scroll des nuages dans #place avec JQUERY
-/*  function isElementInViewport(el) {
-    const rect = el.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-} */
-
-// CLOUDS ANIMATION ON SCROLL WHEN IN VIEWPORT
-/* function moveClouds() {
-
-        const clouds = document.querySelectorAll('.big-cloud');
-
-        var cloudsTop = clouds.getBoundingClientRect().top;
-
-        var windowHeight = window.innerHeight;
-
-        if (cloudsTop < windowHeight * 0.8) {
-
-          cloud.classList.add('scrolling');
-        } else {
-            cloud.classList.remove('scrolling');
-        }
-
-        
-
-        const scrollPosition = window.scrollY;//nombre de pixels que la page a été défilée verticalement depuis le haut
-
-        const offset = scrollPosition / 5;//contrôler la vitesse du déplacement du nuage
-
-        console.log('scrollPosition', scrollPosition);
-
-        cloud.style.transform = 'translateX(' + (-offset) + 'px)';
-
-}
- */
-/* window.addEventListener('scroll', moveClouds); */
-
+;
 
 
 </script> 
