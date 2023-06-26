@@ -1,3 +1,6 @@
+
+
+
 @media all and (max-width: 768px) {
 
     #story h2, #studio h2{
@@ -18,13 +21,20 @@
     .site-footer {
         padding-top: 3em;
     }
+    #bg-video {
+        display: none;
+    }
+    .rdm-flower,
+    .sun-flower,
+    .flower,
+    .hibiscus,
+    .orchid,
+    .cat,
+    .dark-cat,
+    .yellow-cat {
+        animation: none;
+        display: none;
+    }
 
 
-}
-
-@media (max-width: 920px){
-   /*  .story #place > div {
-        margin: auto;
-       width: 75%;
-    } */
 }

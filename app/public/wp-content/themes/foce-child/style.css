@@ -62,7 +62,7 @@
   #menu-fullscreen .logo {
     display: block;
     position: absolute;
-    top: 2%; }
+    top: 6%; }
   #menu-fullscreen ul {
     list-style: none;
     text-align: center; }
@@ -175,6 +175,9 @@ h2 {
   background-position: center;
   text-align: center; }
 
+#story h2 {
+  margin-top: 121px; }
+
 .site-footer {
   display: flex;
   flex-direction: column;
@@ -203,11 +206,25 @@ h2 {
     margin-left: 1em; }
 
 .banner {
-  background-image: url(./assets/images/banner.png); }
+  background-image: none; }
 
 #banner {
-  position: relative; }
-  #banner img {
+  position: relative;
+  /*Video Bg*/
+  /*Fin de video*/ }
+  #banner video,
+  #banner .fallback-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+  #banner video {
+    z-index: -1; }
+  #banner .fallback-image {
+    z-index: -2; }
+  #banner #logo {
     position: absolute;
     top: 50%;
     left: 50%;

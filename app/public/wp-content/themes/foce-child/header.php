@@ -38,7 +38,7 @@
                         src="<?php echo get_stylesheet_directory_uri() . '/assets/images/random_flower.png'; ?> "
                         alt="">
                     <img class="sun-flower"
-                        src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Sunflower.png'; ?> " alt="">
+                        src="<?php echo get_stylesheet_directory_uri() . '/assets/images/sunflower.png'; ?> " alt="">
                     <img class="orchid"
                         src="<?php echo get_stylesheet_directory_uri() . '/assets/images/orchid.png'; ?> " alt="">
                     <img class="flower"

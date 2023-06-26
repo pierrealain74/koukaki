@@ -8,7 +8,8 @@ get_header();
             <video autoplay muted loop>
                 <source src="<?php echo get_template_directory_uri() . '/assets/videos/video-studio-koukaki.mp4'; ?>" type="video/mp4">
             </video>
-            <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?>" alt="logo Fleurs d'oranger & chats errants"> 
+            <img class="fallback-image" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/banner.png'?>">
+            <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?>" alt="logo Fleurs d'oranger & chats errants" id="logo"> 
         </section>
         <section id="story" class="story fade-in-section">
             <h2 class="slide-in">L'histoire</h2>
@@ -100,12 +101,17 @@ get_header();
 
 <script>
 
-//Créer effet parallax sur video et sur les chats
+//Créer effet parallax sur video et sur le logo
 
 const video = document.querySelector('video');
-console.log('image logo : ', video)
+//console.log('image logo : ', video)
 new simpleParallax(video, {
   orientation: 'right'
+});
+
+const logo = document.getElementById('logo');
+new simpleParallax(logo, {
+  orientation: 'left'
 });
 
 
@@ -113,7 +119,7 @@ new simpleParallax(video, {
 //Effets avec le scroll
 document.addEventListener('DOMContentLoaded', function() {
   var fadeSections = document.querySelectorAll('.fade-in-section');
-  var slideH2 = document.querySelectorAll('.slide-in'); // Prend tous les <h2 class="slide-in">
+  var slideH2 = document.querySelectorAll('.slide-in'); // Prend tous les "slide-in"
   const clouds = document.querySelector('.big-cloud');
 
   var skrollrInstance = skrollr.init();//Skroll.js pour parallax sur les nuages (se deplacent sur la gauche)
@@ -168,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
- /* Initialize Swipeeeeeeeeeeeeeer*/
+ /* Initialize Swiper for cats cards swipe by pointer*/
 
  var swiper = new Swiper(".mySwiper", {
       effect: "coverflow",
