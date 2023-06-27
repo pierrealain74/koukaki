@@ -1,5 +1,0 @@
->sass pour nesting, mixins, variables
->bibli :
->>simpleParallax est utilisé pour le deplacement de la video vers la droite au scroll
->>skroll, slide-in, fade-in. Permet de faire le fadein sur les titre H2, le parallax clouds, les fade-in sections
->>swipper pour balayage des cartes des personnage de chats
