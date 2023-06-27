@@ -23,12 +23,12 @@ function enqueue_menu() {
   add_action( 'wp_enqueue_scripts', 'enqueue_menu' );//le 1 = afficher au tout debut du header
   
 /////////////////////////////////////////////////////////////////////
-  //Ajout de JQuery
-function enqueue_jquery() {
+  //Ajout de JQuery // En fait pas besoin...
+/* function enqueue_jquery() {
 
     wp_enqueue_script( 'jquery', get_stylesheet_directory_uri() . 'node_modules/jquery/dist/jquery.min.js', array(), '1.0', false );
   }
-  add_action( 'wp_enqueue_scripts', 'enqueue_jquery' );
+  add_action( 'wp_enqueue_scripts', 'enqueue_jquery' ); */
 /////////////////////////////////////////////////////////////////////
   //Ajout des script en fin de front-page pour skroll, slide-in, fade-in. Permet de faire le fadein sur les titre H2, le parallax clouds, les fade-in sections
   function enqueue_skroll_fade_slide(){
