@@ -29,14 +29,6 @@ function enqueue_menu() {
     wp_enqueue_script( 'jquery', get_stylesheet_directory_uri() . 'node_modules/jquery/dist/jquery.min.js', array(), '1.0', false );
   }
   add_action( 'wp_enqueue_scripts', 'enqueue_jquery' ); */
-/////////////////////////////////////////////////////////////////////
-  //Ajout des script en fin de front-page pour skroll, slide-in, fade-in. Permet de faire le fadein sur les titre H2, le parallax clouds, les fade-in sections
-  function enqueue_skroll_fade_slide(){
-
-    wp_enqueue_script( 'fade-slide-skroll', get_stylesheet_directory_uri() . '/js/scroll-slide-and-fade.js', array(), false, true );
-}
-add_action( 'wp_footer', 'enqueue_skroll_fade_slide' );
-
 
 /////////////////////////////////////////////////////////////////////
 //Ajout de simpleparallax.js pour le bg video et logo
@@ -64,7 +56,16 @@ add_action( 'wp_enqueue_scripts', 'enqueue_swiper' );
 add_action( 'wp_footer', 'enqueue_swiper_init' );
 
 /////////////////////////////////////////////////////////////////////
-//Ajout du script Skroll.js (pour les nuages)
+
+//Ajout des script en fin de front-page pour skroll, slide-in, fade-in. Permet de faire le fadein sur les titre H2, le parallax clouds, les fade-in sections
+  function enqueue_skroll_fade_slide(){
+
+    wp_enqueue_script( 'fade-slide-skroll', get_stylesheet_directory_uri() . '/js/scroll-slide-and-fade.js', array(), false, true );
+}
+add_action( 'wp_footer', 'enqueue_skroll_fade_slide' );
+
+//Ajout de la bibliotheque Skroll.js (pour les nuages)
+
 function enqueue_skroll() {
     wp_enqueue_script( 'skroll', get_stylesheet_directory_uri() . '/js/skrollr-master/dist/skrollr.min.js', array(), '1.0', false );
   }
@@ -93,5 +94,3 @@ function theme_customizer_sections( $wp_customize ) {
     ) );
 }
 add_action( 'customize_register', 'theme_customizer_sections' );
-
-  
