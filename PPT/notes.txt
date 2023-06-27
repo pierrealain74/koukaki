@@ -1,0 +1,1 @@
+simpleParallax est utilisé pour le deplacement de la video vers la droite au scroll

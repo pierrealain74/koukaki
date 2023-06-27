@@ -15,37 +15,62 @@ if ( get_stylesheet() !== get_template() ) {
     } );
 }
 
+/////////////////////////////////////////////////////////////////////
 //Ajout du script menu.js
 function enqueue_menu() {
     wp_enqueue_script( 'menu', get_stylesheet_directory_uri() . '/js/menu.js', array(), '1.0', true ); //afficher au tout debut du header
   }
   add_action( 'wp_enqueue_scripts', 'enqueue_menu' );//le 1 = afficher au tout debut du header
   
-/* //Ajout du script JS Fade-In
-function enqueue_fade_in_script() {
-    wp_enqueue_script( 'fade-in-script', get_stylesheet_directory_uri() . '/js/fade-in.js', array());
-  }
-  add_action( 'wp_enqueue_scripts', 'enqueue_fade_in_script' ); */
-
+/////////////////////////////////////////////////////////////////////
   //Ajout de JQuery
 function enqueue_jquery() {
+
     wp_enqueue_script( 'jquery', get_stylesheet_directory_uri() . 'node_modules/jquery/dist/jquery.min.js', array(), '1.0', false );
   }
   add_action( 'wp_enqueue_scripts', 'enqueue_jquery' );
+/////////////////////////////////////////////////////////////////////
+  //Ajout des script en fin de front-page pour skroll, slide-in, fade-in. Permet de faire le fadein sur les titre H2, le parallax clouds, les fade-in sections
+  function enqueue_skroll_fade_slide(){
 
-  //Ajout du script JS Swiper
-function enqueue_swiper_styles() {
-    wp_enqueue_style( 'swiper', get_stylesheet_directory_uri() . '/swiper9_swiper-bundle.min.css' );
+    wp_enqueue_script( 'fade-slide-skroll', get_stylesheet_directory_uri() . '/js/scroll-slide-and-fade.js', array(), false, true );
 }
-add_action( 'wp_enqueue_scripts', 'enqueue_swiper_styles' );
+add_action( 'wp_footer', 'enqueue_skroll_fade_slide' );
 
 
+/////////////////////////////////////////////////////////////////////
+//Ajout de simpleparallax.js pour le bg video et logo
+function enqueue_simpleparallax() {
+    
+    wp_enqueue_script( 'simpleparallax', get_stylesheet_directory_uri() . '/node_modules/simple-parallax-js/dist/simpleParallax.min.js', array(), false, true );
+
+    wp_enqueue_script( 'simpleparallax-config', get_stylesheet_directory_uri() . '/js/simpleparallax.js', array(), false, true );
+
+
+}
+add_action( 'wp_footer', 'enqueue_simpleparallax' );
+
+/////////////////////////////////////////////////////////////////////
+  //Ajout du script JS Swipeeeeeeer
+function enqueue_swiper() {
+    // Charge le fichier CSS du Swiper
+    wp_enqueue_style( 'swiper', get_stylesheet_directory_uri() . '/js/swiper9_swiper-bundle.min.css' );
+}
+function enqueue_swiper_init() {
+    
+    wp_enqueue_script( 'swiper-init', get_stylesheet_directory_uri() . '/js/swiper-init.js', array(), false, true );
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_swiper' );
+add_action( 'wp_footer', 'enqueue_swiper_init' );
+
+/////////////////////////////////////////////////////////////////////
 //Ajout du script Skroll.js (pour les nuages)
 function enqueue_skroll() {
     wp_enqueue_script( 'skroll', get_stylesheet_directory_uri() . '/js/skrollr-master/dist/skrollr.min.js', array(), '1.0', false );
   }
   add_action( 'wp_enqueue_scripts', 'enqueue_skroll' );
 
+/////////////////////////////////////////////////////////////////////
 //Test de création d'une section dans le customizer
 function theme_customizer_sections( $wp_customize ) {
     // Créer une nouvelle section

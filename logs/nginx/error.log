@@ -9,3 +9,4 @@
 2023/06/16 12:06:23 [error] 9784#12432: *4861 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET /wp-admin/admin-ajax.php?action=rest-nonce HTTP/1.0", upstream: "fastcgi://php", host: "koukaki.local", referrer: "http://koukaki.local/wp-admin/post.php?post=8&action=edit"
 2023/06/16 12:06:23 [error] 9784#12432: *4862 no live upstreams while connecting to upstream, client: 127.0.0.1, server: , request: "GET /wp-admin/admin-ajax.php?action=rest-nonce HTTP/1.0", upstream: "fastcgi://php", host: "koukaki.local", referrer: "http://koukaki.local/wp-admin/post.php?post=8&action=edit"
 2023/06/23 16:54:47 [alert] 9740#7152: OpenEvent("ngx_master_7672") failed (2: FormatMessage() error:(15100))
+2023/06/27 00:00:28 [alert] 14144#13024: OpenEvent("ngx_master_2640") failed (2: FormatMessage() error:(15100))

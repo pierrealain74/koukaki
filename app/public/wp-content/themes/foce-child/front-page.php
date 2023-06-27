@@ -20,56 +20,11 @@ get_header();
             <article id="story" class="story__article">
                 <p><?php echo get_theme_mod('story'); ?></p>
             </article>
-            <?php
-            $args = array(
-                'post_type' => 'characters',
-                'posts_per_page' => -1,
-                'meta_key'  => '_main_char_field',
-                'orderby'   => 'meta_value_num',
 
-            );
-            $characters_query = new WP_Query($args);
-            ?>
-            <!--Ici insérer l'animation Swiper sur les personnages-->
-            <?php
+            <!--ajout du template swipe cats-->
+            <?php get_template_part('template-parts/cats_swipe'); ?>
 
-            echo '<div class="swiper mySwiper" id="characters">';
-            echo '<div class="swiper-wrapper">';
-
-            while ($characters_query->have_posts()) {
-
-              $characters_query->the_post();
-
-
-              echo '<div class="swiper-slide">';
-              echo get_the_post_thumbnail(get_the_ID(), 'full');
-              echo '<figcaption>';
-              the_title();
-              echo'</figcaption>';
-              echo '</div>';
-            }
-            
-            echo '</div></div>';            
-            ?>
-            
-            
-            <!--Fin Swipper-->
-
-<!--             <article id="place" class="fade-in-section">
-
-                
-                <div class="clouds">
-                  <img class="little-cloud" src="<?php //echo get_stylesheet_directory_uri() . '/assets/images/little_cloud.png' ?>" alt="petit nuage">
-                  <img class="big-cloud" src="<?php //echo get_stylesheet_directory_uri() . '/assets/images/big_cloud.png' ?>" alt="grand nuage">
-                </div>
-
-                <h3>Le Lieu</h3>                    
-                <p><?php //echo get_theme_mod('place'); ?></p>
-
-            </article> -->
-
-
-            <article id="place" class="fade-in-section">
+             <article id="place" class="fade-in-section">
                 <div class="clouds">
                     <img class="little-cloud" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/little_cloud.png' ?>" alt="petit nuage" data-1233="transform: translateX(0px);" data-2500="transform: translateX(-600px);">
 
@@ -90,113 +45,6 @@ get_header();
             </div>
 
             </section>
-    </main><!-- #main -->
-
-
-<!--Javascript pour le parallax et fade-in des sections déclanché par le scrolling de la page-->
-<script src="<?php echo get_stylesheet_directory_uri() . '/node_modules/simple-parallax-js/dist/simpleParallax.min.js'; ?>"></script>
-
-<!-- Swiper JS pour l'effet carrousel des chats-->
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-<script>
-
-//Créer effet parallax sur video et sur le logo
-
-const video = document.querySelector('video');
-//console.log('image logo : ', video)
-new simpleParallax(video, {
-  orientation: 'right'
-});
-
-const logo = document.getElementById('logo');
-new simpleParallax(logo, {
-  orientation: 'left'
-});
-
-
-
-//Effets avec le scroll
-document.addEventListener('DOMContentLoaded', function() {
-  var fadeSections = document.querySelectorAll('.fade-in-section');
-  var slideH2 = document.querySelectorAll('.slide-in'); // Prend tous les "slide-in"
-  const clouds = document.querySelector('.big-cloud');
-
-  var skrollrInstance = skrollr.init();//Skroll.js pour parallax sur les nuages (se deplacent sur la gauche)
-
-
-  function checkFadeSections() {
-    fadeSections.forEach(function(section) {
-      var sectionTop = section.getBoundingClientRect().top;
-      var windowHeight = window.innerHeight;
-
-      if (sectionTop < windowHeight * 0.8) {
-        section.classList.add('show');
-      }
-    });
-  }
-
-  function checkSlideH2() {
-    slideH2.forEach(function(slide) {
-      var slideTop = slide.getBoundingClientRect().top;
-
-      var windowHeight = window.innerHeight;
- 
-      if (slideTop < windowHeight * 0.8) {
-        slide.classList.add('slide-in');
-      } else {
-        slide.classList.remove('slide-in');
-      }
-    });
-  }
-
-  function checkClouds(){
-
-  const clouds = document.querySelector('.big-cloud');
-
-  var cloudsTop = clouds.getBoundingClientRect().top;
-
-  var windowHeight = window.innerHeight;
-
-  console.log(cloudsTop,windowHeight)
-  }
-
-  // Appeler les fonctions checkFadeSections et checkSlideH2 lorsque la page est chargée
-  checkFadeSections();
-  //checkSlideH2();
-
-  // Appeler les fonctions checkFadeSections et checkSlideH2 lorsque la page est défilée
-  window.addEventListener('scroll', function() {
-    checkFadeSections();
-    checkSlideH2();
-    checkClouds();
-
-  });
-});
-
- /* Initialize Swiper for cats cards swipe by pointer*/
-
- var swiper = new Swiper(".mySwiper", {
-      effect: "coverflow",
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: "auto",
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-      },
-    });
-;
-
-
-</script> 
-
-
+    </main>
 <?php
 get_footer();

@@ -133,6 +133,9 @@
   .fade-in-section.show {
     opacity: 1; }
 
+p {
+  font-size: 20px; }
+
 .slide-in {
   animation-duration: 3s;
   animation-name: slidein; }
