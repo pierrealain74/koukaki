@@ -8,146 +8,174 @@
  Version: 0.1
  */
 
- 
- @import 'assets/scss/navigation';
+@import "assets/scss/navigation";
 
+.post,
+.page {
+  max-width: none;
+}
 
+.fade-in-section {
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
 
- .fade-in-section {
-   opacity: 0;
-   transition: opacity 2s ease-in-out;
-   
-   &.show {
-     opacity: 1;
-   }
- }
+  &.show {
+    opacity: 1;
+  }
+}
+
 //Agrandir un peu les txt
- p {
+p {
   font-size: 20px;
 }
 
- .slide-in {
-  animation-duration: 3s;
-  animation-name: slidein;
- }
- @keyframes slidein {
+/*SLide des titres h2*/
+.toSlide {
+  opacity: 0;
+  height: 80px;
+  display: block;
+}
+.slide-in {
+  opacity: 0;
+  animation: slidein 1s linear forwards;
+}
+@keyframes slidein {
   from {
-    margin-left: 100%;
-    width: 300%;
+    transform: translateY(80px);
+    opacity: 0;
   }
 
   to {
-    margin-left: 0%;
-    width: 100%;
+    transform: translateY(0);
+    opacity: 1;
   }
 }
- 
- .site-footer {
-   padding-top: 7em;
-   
-   &::before {
-     animation: rotatesunflower 5s infinite linear;
-   }
-   
-   &::after {
-     animation: rotateOrchid 6s infinite linear;
-   }
- }
- 
- .story__article::after {
-   animation: rotateHibiscus 5s infinite linear;
- }
- 
- .story h2::after {
-   animation: rotateSunflower 6s infinite linear;
- }
- 
- #studio h2::before {
-   animation: rotateRandomflower 12s infinite linear;
- }
- 
- #studio h2::after {
-   animation: rotateFlower 15s infinite linear;
- }
- 
- h2 {
-   color: #FFF5E9;
-   font-size: 4.429rem;
-   //background-image: url(./assets/images/purple_title_bg.png);
-   background-color: #FFF5E9;
-   background-repeat: no-repeat;
-   background-size: contain;
-   padding: 1em 2em;
-   margin: 0;
-   background-position: center;
-   text-align: center;
- }
- #story h2{
-  margin-top: 121px;
- }
- .site-footer {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   text-align: center;
-   
-   .oscar {
-     display: flex;
-     flex-direction: row;
-     align-items: center;
-     justify-content: center;
-     width: 75%;
-     margin-bottom: 155px;
-   }
-   
-   h2.titre_oscar {
-     background-color: transparent;
-   }
-   
-   .titre_oscar {
-     color: #FFF5E9;
-     font-size: 2.4rem;
-     padding: 1.8em 2em;
-     background-image: url(./assets/images/titre_oscar_bg.png) !important;
-     background-repeat: no-repeat;
-     background-position: center;
-     background-color: transparent;
-     text-align: center;
-     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-   }
-   
-   .imgRight {
-     margin-left: 1em;
-   }
- }
- .banner {
-  background-image: none;
- }
- #banner {
+/*Fin des slides titre h2*/
 
+.site-footer {
+  padding-top: 7em;
+
+  &::before {
+    animation: rotateFlower 5s infinite linear;
+  }
+
+  &::after {
+    animation: rotateFlower 6s infinite linear;
+  }
+}
+
+.story__article::after {
+  animation: rotateFlower 5s infinite linear;
+}
+
+.story h2::after {
+  animation: rotateFlower 6s infinite linear;
+}
+
+#studio h2::before {
+  animation: rotateFlower 12s infinite linear;
+}
+
+#studio h2::after {
+  animation: rotateFlower 15s infinite linear;
+}
+
+@keyframes rotateFlower {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+h2 {
+  color: #fff5e9;
+  font-size: 4.429rem;
+  //background-image: url(./assets/images/purple_title_bg.png);
+  background-color: #fff5e9;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding: 1em 2em;
+  margin: 0;
+  background-position: center;
+  text-align: center;
+}
+#story h2 {
+  margin-top: 121px;
+}
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  .oscar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 75%;
+    margin-bottom: 155px;
+  }
+
+  h2.titre_oscar {
+    background-color: transparent;
+  }
+
+  .titre_oscar {
+    color: #fff5e9;
+    font-size: 2.4rem;
+    padding: 1.8em 2em;
+    background-image: url(./assets/images/titre_oscar_bg.png) !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .imgRight {
+    margin-left: 1em;
+  }
+}
+.banner {
+  /*   display:block; 
+  min-height: auto;
+  background-size: auto; */
+  min-height: unset;
+}
+#banner {
   position: relative;
+
+  animation: animeBanner 2s ease-in;
 
   /*Video Bg*/
 
-  video,
-  .fallback-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-
-  }
-  video {
-    z-index: -1;
+  @keyframes animeBanner {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   .fallback-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%; // Limite la largeur à 100% de son conteneur
     z-index: -2;
   }
 
-  /*Fin de video*/
+  #bg-video {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+  }
 
   #logo {
     position: absolute;
@@ -156,12 +184,12 @@
     max-width: 100%;
     max-height: 100%;
     // Animation de flottement
-    animation: floatAnimation 3s ease-in-out infinite alternate;
+    animation: floatLogo 3s ease-in-out infinite alternate;
     z-index: 1;
   }
 
   // Effet de flottement du logo
-  @keyframes floatAnimation {
+  @keyframes floatLogo {
     0% {
       transform: translate(-50%, -50%);
     }
@@ -173,7 +201,6 @@
     }
   }
 }
-
 
 .swiper {
   width: 100%;
@@ -193,7 +220,7 @@
   }
 }
 
-figcaption{
+figcaption {
   text-align: center;
 }
 
@@ -206,33 +233,35 @@ figcaption{
 
 .story .little-cloud,
 .story .big-cloud {
-    position: absolute;
-    z-index: 1;
-    filter: blur(15px);
+  position: absolute;
+  z-index: 1;
+  filter: blur(25px);
 }
 
 .story .big-cloud {
-    top: 19%;
-    right: 15%;
+  top: 150px;
+  right: 0px;
 }
 
 .story .little-cloud {
-    top: 39%;
-    right: 25%;
+  top: 350px;
+  right: 0px;
 }
 
 .story .little-cloud.scrolling,
 .story .big-cloud.scrolling {
-    animation: cloud-movement linear forwards;
+  animation: cloud-movement linear forwards;
 }
 
 @keyframes cloud-movement {
   from {
-      transform: translateX(0);
+    transform: translateX(0);
   }
 
   to {
-      transform: translateX(-300px);
+    transform: translateX(-300px);
   }
 }
-/*npm run compile:sass OU npm run watch:sass *//*etre placé dans le theme enfant*/
+
+@import "assets/scss/responsive";
+/*npm run compile:sass OU npm run watch:sass */ /*etre placé dans le theme enfant*/

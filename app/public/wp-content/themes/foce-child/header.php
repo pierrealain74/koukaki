@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    
-
     <?php wp_head(); ?>
 </head>
 
@@ -19,7 +17,9 @@
         </a>
 
         <header id="masthead" class="site-header">
+            
             <nav id="nav-container" class="navigation">
+
                 <ul id="menu">
                     <li class="title-site"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></li>
                 </ul>
